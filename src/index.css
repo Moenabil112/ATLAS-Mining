@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Alexandria", ui-sans-serif, system-ui, sans-serif;
+  background-color: #0a0d0f;
+  color: #e8ecef;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* RTL / LTR aware logical defaults */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Custom scrollbar — institutional feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #10151a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a343d;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4651;
+}
+
+@layer components {
+  .room-card {
+    @apply rounded-2xl border border-graphite-700/70 bg-graphite-850/80 shadow-card backdrop-blur-sm;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+  .section-title {
+    @apply text-2xl font-700 tracking-tight text-white sm:text-3xl;
+  }
+  .hairline {
+    @apply border-graphite-700/60;
+  }
+}
+
+/* font-weight utilities mapped to Alexandria weights */
+.font-300 { font-weight: 300; }
+.font-400 { font-weight: 400; }
+.font-500 { font-weight: 500; }
+.font-600 { font-weight: 600; }
+.font-700 { font-weight: 700; }
+.font-800 { font-weight: 800; }
