@@ -12,6 +12,7 @@ export type SectionId =
 export interface NavEntry {
   id: SectionId;
   label: L;
+  short: L;
 }
 
 export const ui = {
@@ -31,13 +32,13 @@ export const ui = {
   },
 
   nav: [
-    { id: "executive", label: l("Executive Gateway", "Portail Exécutif", "البوابة التنفيذية") },
-    { id: "projectMap", label: l("Project Map", "Carte du Projet", "خريطة المشروع") },
-    { id: "pathways", label: l("Partner Pathways", "Parcours Partenaires", "مسارات الشركاء") },
-    { id: "technology", label: l("Technology Architecture", "Architecture Technologique", "البنية التقنية") },
-    { id: "capital", label: l("USD 50M Map", "Carte 50 M USD", "خريطة الـ50 مليون دولار") },
-    { id: "documents", label: l("Document Package Room", "Salle des Documents", "غرفة حزم الوثائق") },
-    { id: "decision", label: l("Decision Room", "Salle de Décision", "غرفة القرار") },
+    { id: "executive", label: l("Executive Gateway", "Portail Exécutif", "البوابة التنفيذية"), short: l("Gateway", "Portail", "البوابة") },
+    { id: "projectMap", label: l("Project Map", "Carte du Projet", "خريطة المشروع"), short: l("Map", "Carte", "الخريطة") },
+    { id: "pathways", label: l("Partner Pathways", "Parcours Partenaires", "مسارات الشركاء"), short: l("Partners", "Partenaires", "الشركاء") },
+    { id: "technology", label: l("Technology Architecture", "Architecture Technologique", "البنية التقنية"), short: l("Technology", "Technologie", "التقنية") },
+    { id: "capital", label: l("USD 50M Map", "Carte 50 M USD", "خريطة الـ50 مليون دولار"), short: l("Capital", "Capital", "رأس المال") },
+    { id: "documents", label: l("Document Package Room", "Salle des Documents", "غرفة حزم الوثائق"), short: l("Documents", "Documents", "الوثائق") },
+    { id: "decision", label: l("Decision Room", "Salle de Décision", "غرفة القرار"), short: l("Decisions", "Décisions", "القرارات") },
   ] as NavEntry[],
 
   partnerView: {
@@ -65,6 +66,10 @@ export const ui = {
     nextStep: l("Next step", "Prochaine étape", "الخطوة التالية"),
     highlighted: l("Highlighted for your view", "Mis en avant pour votre vue", "مميّز لعرضك"),
     relevantToView: l("Relevant to your view", "Pertinent pour votre vue", "ذو صلة بعرضك"),
+    suggestedNextAction: l("Suggested next action", "Action suivante suggérée", "الإجراء التالي المقترح"),
+    recommendedNextStep: l("Recommended next step", "Prochaine étape recommandée", "الخطوة التالية الموصى بها"),
+    stage: l("Stage", "Étape", "المرحلة"),
+    stakeholder: l("Stakeholder", "Partie prenante", "الجهة المعنية"),
   },
 
   status: {

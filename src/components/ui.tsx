@@ -3,9 +3,14 @@ import type { ReactNode } from "react";
 
 export function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
-    <div className="mb-6 max-w-3xl">
-      <h2 className="text-2xl font-700 tracking-tight text-white sm:text-3xl">{title}</h2>
-      {subtitle && <p className="mt-2 text-sm leading-relaxed text-slate-400 sm:text-base">{subtitle}</p>}
+    <div className="mb-6 max-w-3xl sm:mb-8">
+      <div className="mb-2.5 h-0.5 w-10 rounded-full bg-gradient-to-r from-copper-500 to-transparent" />
+      <h2 className="text-[26px] font-700 leading-tight tracking-tight text-white sm:text-3xl lg:text-[34px]">
+        {title}
+      </h2>
+      {subtitle && (
+        <p className="mt-2.5 text-[15px] leading-relaxed text-slate-400 sm:text-base">{subtitle}</p>
+      )}
     </div>
   );
 }

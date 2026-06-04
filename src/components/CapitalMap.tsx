@@ -70,18 +70,32 @@ export function CapitalMap() {
               return (
                 <div
                   key={c.id}
-                  className={`panel p-4 transition-shadow ${hl ? "ring-1 ring-gold-500/50" : ""}`}
+                  className={`panel flex flex-col p-4 transition-shadow ${
+                    hl ? "ring-1 ring-gold-500/50" : ""
+                  }`}
                   style={{ borderInlineStartColor: c.color, borderInlineStartWidth: 3 }}
                 >
-                  <div className="flex items-start justify-between gap-2">
-                    <span className="text-sm font-500 leading-snug text-slate-200">
-                      {c.title[lang]}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[11px] font-700 uppercase tracking-wider text-slate-500">
+                      {ui.common.stage[lang]} {c.stage}
                     </span>
                     {hl && <Sparkles size={13} className="shrink-0 text-gold-400/80" />}
                   </div>
-                  <div className="mt-2 text-xl font-800" style={{ color: c.color }}>
-                    {formatUsdM(c.amount)}
+                  <div className="mt-1 flex items-baseline justify-between gap-2">
+                    <span className="text-[13px] font-600 leading-snug text-slate-100">
+                      {c.title[lang]}
+                    </span>
+                    <span className="shrink-0 text-lg font-800" style={{ color: c.color }}>
+                      {formatUsdM(c.amount)}
+                    </span>
                   </div>
+                  <p className="mt-1.5 text-xs leading-relaxed text-slate-400">{c.purpose[lang]}</p>
+                  <span
+                    className="mt-2.5 inline-flex w-fit rounded-md px-2 py-0.5 text-[11px] font-500"
+                    style={{ backgroundColor: `${c.color}1f`, color: c.color }}
+                  >
+                    {c.stakeholder[lang]}
+                  </span>
                 </div>
               );
             })}

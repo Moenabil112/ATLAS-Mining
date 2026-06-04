@@ -1,11 +1,12 @@
-import { useState, type ComponentType } from "react";
-import { Menu, X } from "lucide-react";
+import { type ComponentType } from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 import { ui, type SectionId } from "../i18n/translations";
 import { LanguageToggle } from "./LanguageToggle";
 import { ConfidentialBadge } from "./ConfidentialBadge";
 import { PartnerViewSelector } from "./PartnerViewSelector";
 import { Sidebar } from "./Sidebar";
+import { BottomNav } from "./BottomNav";
 import { useView } from "./viewContext";
 
 import { ExecutiveGateway } from "./ExecutiveGateway";
@@ -29,32 +30,25 @@ const sections: Record<SectionId, ComponentType> = {
 export function AppShell() {
   const { lang } = useLanguage();
   const { activeSection } = useView();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   const Active = sections[activeSection];
 
   return (
     <div className="min-h-screen bg-graphite-950">
       {/* top bar */}
-      <header className="sticky top-0 z-40 border-b border-graphite-800/80 bg-graphite-950/85 backdrop-blur">
-        <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-3 px-4 py-3">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setMobileOpen((v) => !v)}
-              className="rounded-lg border border-graphite-700/70 p-2 text-slate-300 lg:hidden"
-              aria-label="Toggle navigation"
-            >
-              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-            </button>
-            <img src="/akanil-logo.svg" alt="Akanil" className="h-9 w-12" />
-            <div className="leading-tight">
-              <div className="text-sm font-700 text-white sm:text-base">{ui.brand.name[lang]}</div>
+      <header className="sticky top-0 z-30 border-b border-graphite-800/80 bg-graphite-950/85 backdrop-blur">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-2 px-4 py-2.5 sm:px-6">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <img src="/akanil-logo.svg" alt="Akanil" className="h-8 w-11 shrink-0 sm:h-9 sm:w-12" />
+            <div className="min-w-0 leading-tight">
+              <div className="truncate text-[13px] font-700 text-white sm:text-base">
+                {ui.brand.name[lang]}
+              </div>
               <div className="hidden text-[11px] text-gold-400 sm:block">{ui.brand.short[lang]}</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="hidden lg:block">
+          <div className="flex shrink-0 items-center gap-2">
+            <div className="hidden xl:block">
               <ConfidentialBadge />
             </div>
             <PartnerViewSelector />
@@ -63,28 +57,24 @@ export function AppShell() {
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-[1500px] gap-6 px-4 py-6">
-        {/* sidebar */}
-        <aside
-          className={`fixed inset-y-0 z-30 w-64 shrink-0 transform border-graphite-800/80 bg-graphite-950/95 p-4 pt-20 transition-transform duration-200 lg:sticky lg:top-[76px] lg:z-0 lg:h-[calc(100vh-100px)] lg:transform-none lg:rounded-2xl lg:border lg:bg-graphite-900/40 lg:p-3 lg:pt-3 ltr:left-0 ltr:border-r rtl:right-0 rtl:border-l ${
-            mobileOpen
-              ? "translate-x-0"
-              : "ltr:-translate-x-full rtl:translate-x-full lg:translate-x-0"
-          }`}
-        >
-          <Sidebar onNavigate={() => setMobileOpen(false)} />
+      <div className="mx-auto flex max-w-[1400px] gap-6 px-4 sm:px-6 lg:px-8">
+        {/* sidebar — desktop only */}
+        <aside className="sticky top-[68px] hidden h-[calc(100vh-92px)] w-[264px] shrink-0 py-6 lg:block">
+          <div className="h-full rounded-2xl border border-graphite-800/70 bg-graphite-900/40 p-3">
+            <Sidebar />
+          </div>
         </aside>
 
-        {mobileOpen && (
-          <div
-            className="fixed inset-0 z-20 bg-black/50 lg:hidden"
-            onClick={() => setMobileOpen(false)}
-          />
-        )}
-
         {/* main canvas */}
-        <main className="min-w-0 flex-1">
-          <Active />
+        <main className="min-w-0 flex-1 pb-28 pt-5 sm:pt-6 lg:pb-10">
+          <motion.div
+            key={activeSection}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+          >
+            <Active />
+          </motion.div>
 
           <footer className="mt-12 border-t border-graphite-800/70 pt-5">
             <div className="flex flex-col items-start gap-2 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
@@ -97,6 +87,9 @@ export function AppShell() {
           </footer>
         </main>
       </div>
+
+      {/* bottom navigation — mobile + tablet */}
+      <BottomNav />
     </div>
   );
 }

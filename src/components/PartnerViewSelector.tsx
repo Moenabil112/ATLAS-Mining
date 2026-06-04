@@ -33,7 +33,9 @@ export function PartnerViewSelector() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-xl border border-graphite-700/70 bg-graphite-900/60 px-3 py-2 text-xs font-500 text-slate-200 transition-colors hover:border-graphite-600"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className="touch flex items-center gap-2 rounded-xl border border-graphite-700/70 bg-graphite-900/60 px-3 py-2 text-xs font-500 text-slate-200 transition-colors hover:border-graphite-600"
       >
         <Eye size={14} className="text-gold-400" />
         <span className="hidden text-slate-400 sm:inline">{ui.partnerView.title[lang]}:</span>
@@ -57,7 +59,7 @@ export function PartnerViewSelector() {
                   setPartnerView(o.id);
                   setOpen(false);
                 }}
-                className={`flex w-full items-center justify-between gap-2 px-4 py-2.5 text-start text-sm transition-colors ${
+                className={`flex min-h-[44px] w-full items-center justify-between gap-2 px-4 py-2.5 text-start text-sm transition-colors ${
                   active ? "bg-gold-500/12 text-gold-400" : "text-slate-300 hover:bg-graphite-800"
                 }`}
               >

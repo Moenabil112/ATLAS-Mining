@@ -21,8 +21,10 @@ export interface PartnerPathway {
   id: PartnerViewId;
   icon: LucideIcon;
   name: L;
+  badge: L;
   message: L;
   interests: L[];
+  nextAction: L;
   button: L;
   accent: string;
 }
@@ -33,6 +35,8 @@ export const partnerPathways: PartnerPathway[] = [
     icon: Factory,
     accent: "#b86a34",
     name: l("Industrial Partner", "Partenaire Industriel", "الشريك الصناعي"),
+    badge: l("Industrial", "Industriel", "صناعي"),
+    nextAction: l("Open the industrial partner pathway and processing review.", "Ouvrir le parcours industriel et l'examen du traitement.", "فتح المسار الصناعي ومراجعة المعالجة."),
     message: l(
       "Supports operations, processing, equipment, product quality and the pilot-to-industrial transition.",
       "Soutient les opérations, le traitement, les équipements, la qualité produit et la transition pilote-vers-industriel.",
@@ -52,6 +56,8 @@ export const partnerPathways: PartnerPathway[] = [
     icon: Building2,
     accent: "#cdb893",
     name: l("Development Partner", "Partenaire Développement", "شريك التنمية"),
+    badge: l("Development", "Développement", "تنمية"),
+    nextAction: l("Open the development pathway for infrastructure and SMEs.", "Ouvrir le parcours développement pour les infrastructures et PME.", "فتح مسار التنمية للبنية التحتية والمقاولات."),
     message: l(
       "Supports infrastructure, renewable energy, water systems, regional services and SME ecosystem development.",
       "Soutient les infrastructures, les énergies renouvelables, les systèmes d'eau, les services régionaux et le développement de l'écosystème PME.",
@@ -72,6 +78,8 @@ export const partnerPathways: PartnerPathway[] = [
     icon: Landmark,
     accent: "#c8a86a",
     name: l("Financial Partner", "Partenaire Financier", "الشريك المالي"),
+    badge: l("Finance", "Finance", "تمويل"),
+    nextAction: l("Open the financial pathway and USD 50M structuring.", "Ouvrir le parcours financier et la structuration de 50 M USD.", "فتح المسار المالي وهيكلة الـ50 مليون دولار."),
     message: l(
       "Supports green finance structuring, staged capital planning, governance, bankability and risk reduction.",
       "Soutient la structuration de finance verte, la planification échelonnée du capital, la gouvernance, la bancabilité et la réduction des risques.",
@@ -91,6 +99,8 @@ export const partnerPathways: PartnerPathway[] = [
     icon: FlaskConical,
     accent: "#36a169",
     name: l("Technical & Environmental Partner", "Partenaire Technique & Environnemental", "الشريك التقني والبيئي"),
+    badge: l("Validation", "Validation", "تحقق"),
+    nextAction: l("Launch technical and environmental validation.", "Lancer la validation technique et environnementale.", "إطلاق التحقق التقني والبيئي."),
     message: l(
       "Supports sampling, metallurgical testing, water studies, environmental validation and ESG indicators.",
       "Soutient l'échantillonnage, les essais métallurgiques, les études d'eau, la validation environnementale et les indicateurs ESG.",
@@ -111,6 +121,8 @@ export const partnerPathways: PartnerPathway[] = [
     icon: Briefcase,
     accent: "#b08d57",
     name: l("Board / Decision-Makers", "Conseil / Décideurs", "المجلس / صنّاع القرار"),
+    badge: l("Strategic", "Stratégique", "استراتيجي"),
+    nextAction: l("Approve the platform framing and the next decision pathway.", "Approuver le cadrage de la plateforme et le prochain parcours.", "اعتماد تأطير المنصة ومسار القرار التالي."),
     message: l(
       "Reviews the project as a regional industrial development platform and approves the next decision pathway.",
       "Examine le projet comme une plateforme de développement industriel régional et approuve le prochain parcours de décision.",

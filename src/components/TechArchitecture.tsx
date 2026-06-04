@@ -43,7 +43,7 @@ export function TechArchitecture() {
                 {!last && (
                   <ChevronRight
                     size={16}
-                    className={`absolute -bottom-3 left-1/2 -translate-x-1/2 text-slate-600 xl:bottom-1/2 xl:left-auto xl:translate-x-0 xl:translate-y-1/2 ltr:xl:-right-2.5 rtl:xl:-left-2.5 rtl:rotate-180`}
+                    className="absolute top-1/2 hidden -translate-y-1/2 text-slate-600 xl:block ltr:-right-3 rtl:-left-3 rtl:rotate-180"
                   />
                 )}
               </div>

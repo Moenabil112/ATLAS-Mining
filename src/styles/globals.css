@@ -42,11 +42,29 @@ body {
 
 @layer components {
   .panel {
-    @apply rounded-2xl border border-graphite-700/60 bg-graphite-850/70 shadow-card backdrop-blur-sm;
+    @apply rounded-2xl border border-graphite-700/50 bg-graphite-850/70 shadow-card backdrop-blur-sm;
   }
   .chip {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
   }
+  /* minimum 44px touch target on interactive elements that opt in */
+  .touch {
+    @apply min-h-[44px];
+  }
+}
+
+/* subtle copper accent hairline used at the top of premium cards */
+.accent-top {
+  position: relative;
+}
+.accent-top::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, rgba(184, 106, 52, 0.5), transparent);
 }
 
 .font-300 { font-weight: 300; }
