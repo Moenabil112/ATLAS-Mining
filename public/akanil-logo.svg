@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 200" fill="none">
+  <g stroke="#b08d57" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <!-- central petal -->
+    <path d="M140 18 L172 86 L140 140 L108 86 Z" />
+    <!-- left inner petal -->
+    <path d="M108 96 L70 150 L116 150 L140 132" />
+    <!-- right inner petal -->
+    <path d="M172 96 L210 150 L164 150 L140 132" />
+    <!-- base petals -->
+    <path d="M70 150 L96 178 L140 156 L184 178 L210 150" />
+    <!-- upper wing left -->
+    <path d="M118 60 L40 40 L88 70" />
+    <!-- upper wing right -->
+    <path d="M162 60 L240 40 L192 70" />
+    <!-- mid wave left -->
+    <path d="M104 96 L26 84 L82 110" />
+    <!-- mid wave right -->
+    <path d="M176 96 L254 84 L198 110" />
+    <!-- lower wave left -->
+    <path d="M96 124 L34 128 L86 138" />
+    <!-- lower wave right -->
+    <path d="M184 124 L246 128 L194 138" />
+  </g>
+</svg>

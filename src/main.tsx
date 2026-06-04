@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import { Gateway } from "./pages/Gateway";
 import { LanguageProvider } from "./i18n/LanguageContext";
-import "./index.css";
+import "./styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <LanguageProvider>
-      <App />
+      <Gateway />
     </LanguageProvider>
   </React.StrictMode>
 );

@@ -6,34 +6,27 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { en, type Translation } from "./translations.en";
-import { fr } from "./translations.fr";
-import { ar } from "./translations.ar";
 
-export type LangCode = "en" | "fr" | "ar";
-
-const dictionaries: Record<LangCode, Translation> = { en, fr, ar };
+export type Lang = "en" | "fr" | "ar";
 
 interface LanguageContextValue {
-  lang: LangCode;
+  lang: Lang;
   dir: "ltr" | "rtl";
-  t: Translation;
-  setLang: (lang: LangCode) => void;
+  setLang: (lang: Lang) => void;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "atlas-console-lang";
+const STORAGE_KEY = "atlas-gateway-lang";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<LangCode>(() => {
+  const [lang, setLangState] = useState<Lang>(() => {
     if (typeof window === "undefined") return "en";
-    const stored = window.localStorage.getItem(STORAGE_KEY) as LangCode | null;
-    return stored && stored in dictionaries ? stored : "en";
+    const stored = window.localStorage.getItem(STORAGE_KEY) as Lang | null;
+    return stored && ["en", "fr", "ar"].includes(stored) ? stored : "en";
   });
 
-  const t = dictionaries[lang];
-  const dir = t.meta.dir;
+  const dir = lang === "ar" ? "rtl" : "ltr";
 
   useEffect(() => {
     const root = document.documentElement;
@@ -43,13 +36,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [lang, dir]);
 
   const value = useMemo<LanguageContextValue>(
-    () => ({
-      lang,
-      dir,
-      t,
-      setLang: setLangState,
-    }),
-    [lang, dir, t]
+    () => ({ lang, dir, setLang: setLangState }),
+    [lang, dir]
   );
 
   return (
@@ -59,8 +47,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLanguage(): LanguageContextValue {
   const ctx = useContext(LanguageContext);
-  if (!ctx) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
-  }
+  if (!ctx) throw new Error("useLanguage must be used within a LanguageProvider");
   return ctx;
 }

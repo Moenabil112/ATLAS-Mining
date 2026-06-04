@@ -1,53 +1,57 @@
-# ATLAS Green Copper Finance Console
+# ATLAS Green Copper Strategic Gateway
 
-A **confidential, trilingual, experience-first** stakeholder console for **Atlas Mining SARL**,
-presenting a Moroccan Green Copper platform and an **indicative USD 50M strategic expansion target**.
+A **confidential, trilingual, institutional stakeholder gateway** for Atlas Mining's
+Beni Mellal green copper project — presented as **a regional industrial development,
+climate resilience, skills, and SME ecosystem platform anchored by a green copper
+platform**, powered by **Akanil**.
 
-> **Confidential — not a public fundraising offer.** All figures are indicative planning figures,
-> subject to technical, environmental, legal and financial validation.
+> **Confidential institutional material.** All figures and indicators are indicative
+> and subject to technical, environmental, and financial validation.
 
-## Purpose
+## What it does
 
-The console is designed for controlled stakeholder presentations to Moroccan operating partners,
-Attijariwafa Bank, EBRD / GEFF Morocco, EBRD climate finance stakeholders, European development
-finance actors, technical/environmental advisors, and internal Atlas / Akanil decision-makers.
+- **Left sidebar + main strategic canvas** layout with a sticky top bar.
+- **Partner View Selector** (Board · Industrial · Development · Financial · Technical &
+  Environmental) that subtly highlights the most relevant nav sections, documents,
+  decisions and capital layers for the selected stakeholder.
+- **Trilingual** — **Arabic (RTL)**, **French (LTR)**, **English (LTR)** — via an
+  AR / FR / EN toggle, using the **Alexandria** font throughout. Choice is persisted.
+- Premium, data-room-inspired institutional design: deep graphite, copper accents,
+  mineral green, Moroccan earth tones and subtle gold highlights.
 
-It follows an **experience-first narrative**: Atlas strength first, financing pathway last.
+## The seven rooms
 
-`Experience → Morocco Value → Green Pilot → USD 50M Expansion Map → Finance Pathways → Stakeholder Decision`
+1. **Executive Gateway** — first impression, four key cards (Green Copper · Beni Mellal
+   Industrial Development · Climate-Resilient Processing · Skills & SME Ecosystem).
+2. **Project Map** — five connected layers (Mineral · Industrial Processing · Innovation
+   *powered by Akanil* · Regional Development · Finance & Governance).
+3. **Partner Pathways** — five partner cards, each switching the active partner view.
+4. **Technology Architecture** *(Powered by Akanil)* — a 10-step intelligent, low-impact
+   processing flow from field data capture to expansion decision.
+5. **USD 50M Map** — a staged strategic development envelope across six layers, with a
+   donut chart and per-layer cards.
+6. **Document Package Room** — documents grouped by access level (General · Partner ·
+   Validation · Finance) with status badges and downloads.
+7. **Decision Room** — seven board-level decision cards (decision · why it matters ·
+   supporting document · next step).
 
-## Features
+## Documents
 
-- **Confidential entry** with a mock role selector (6 stakeholder roles).
-- **Trilingual** interface — **Arabic (RTL)**, **French (LTR)**, **English (LTR)** — with a live AR / FR / EN toggle. Language preference is persisted.
-- **Alexandria** typography across the whole UI.
-- **Ten rooms**, in narrative order:
-  1. Executive Experience Dashboard
-  2. Atlas Capability Room
-  3. Morocco / Beni Mellal Value Room
-  4. Green Copper Pilot Room (process flow)
-  5. USD 50M Strategic Expansion Map (charts + 6 stakeholder lenses)
-  6. Three Institutional Finance Pathways (EBRD/GEFF · EBRD Climate · Attijariwafa Bank)
-  7. ESG Monitoring MVP (placeholder metrics)
-  8. Evidence & Document Room
-  9. Partner Decision Room
-  10. Claims Control Footer
-- **Claims-control discipline** — approved wording vs. prohibited claims is enforced in copy and surfaced in the footer.
+Nine project PDFs are bundled under `public/docs/` and wired as live downloads
+(Validation Framework, Sampling Protocol, Metallurgical Test Plan, Processing Options,
+Environmental & Water, ESG Data Governance, Financial Envelope, Partnership Strategy,
+Regional & SME). Briefs and the restricted risk register use placeholder links until
+their files are provided.
 
 ## Tech stack
 
-- React + TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion (transitions)
-- Recharts (expansion map charts)
-- Lucide icons
+React · TypeScript · Vite · Tailwind CSS · Framer Motion · Recharts · Lucide · Alexandria.
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev      # start the dev server (http://localhost:5173)
+npm run dev      # dev server at http://localhost:5173
 npm run build    # type-check + production build to dist/
 npm run preview  # preview the production build
 ```
@@ -55,37 +59,45 @@ npm run preview  # preview the production build
 ## Project structure
 
 ```
+public/
+  akanil-logo.svg
+  docs/                       # the downloadable project PDFs
 src/
-  i18n/
-    LanguageContext.tsx       # language provider + RTL/LTR direction
-    translations.en.ts        # canonical dictionary (defines the Translation shape)
-    translations.fr.ts
-    translations.ar.ts
+  components/
+    AppShell.tsx              # top bar + sidebar + section router + footer
+    Sidebar.tsx
+    LanguageToggle.tsx
+    PartnerViewSelector.tsx
+    ConfidentialBadge.tsx
+    viewContext.tsx           # partner view + active section + highlight helpers
+    ExecutiveGateway.tsx
+    ProjectMap.tsx
+    PartnerPathways.tsx / PartnerPathwayCard.tsx
+    TechArchitecture.tsx
+    CapitalMap.tsx
+    DocumentRoom.tsx / DocumentCard.tsx
+    DecisionRoom.tsx / DecisionCard.tsx
+    ui.tsx
   data/
-    types.ts                  # Localized helper + access/evidence types
-    rolesData.ts
-    atlasProfileData.ts
-    expansionBudget50M.ts     # 6 capital clusters + stakeholder lenses
-    pathwaysData.ts           # 3 institutional finance pathways
-    esgMetricsData.ts
-    documentRoomData.ts
-    decisionPathwaysData.ts
-  components/                 # AppShell + the ten rooms + reusable cards/badges
-  App.tsx
-  main.tsx
+    content.ts                # exec cards, project layers, technology steps
+    partnerViews.ts           # partner pathways + per-view highlight config
+    capitalMap.ts             # the six USD 50M layers
+    documents.ts              # document packages (incl. real PDF links)
+    decisions.ts              # decision room entries
+  i18n/
+    LanguageContext.tsx       # lang + RTL/LTR direction
+    translations.ts           # trilingual UI chrome & page headers
+    types.ts                  # Localized helper
+  pages/
+    Gateway.tsx
+  styles/
+    globals.css
 ```
 
-## Designed for future integration
+## Notes
 
-This MVP is structured to later support: secure authentication, role-based access control,
-document storage, an AI assistant, an audit trail, data-room permissions, ESG data ingestion,
-and a green-finance application workflow.
-
-## Disclaimers (claims control)
-
-The interface never claims: proven reserves, commercially recoverable resources, guaranteed
-production, confirmed green certification, GCF accreditation, fully renewed licenses, guaranteed
-funding, guaranteed regional impact, guaranteed employment, or secured USD 50M funding.
-
-It uses disciplined wording such as: *preliminary evidence · subject to verification · pilot-stage ·
-under renewal · indicative expansion target · subject to eligibility review · subject to bank approval.*
+- The USD 50M envelope is presented as a staged **development** map — never as secured
+  funding or an investment offer.
+- The interface is stakeholder-facing only; it contains no developer instructions.
+- Designed to later support secure auth, role-based access control, document storage,
+  an AI assistant, and audit trails.

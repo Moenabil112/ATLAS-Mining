@@ -45,6 +45,18 @@ export default {
           300: "#b3925f",
           400: "#94703e",
         },
+        // soft sand neutrals
+        sand: {
+          100: "#efe9dd",
+          200: "#ddd3c1",
+          300: "#c4b79e",
+        },
+        // subtle gold highlight (Akanil brand)
+        gold: {
+          400: "#c8a86a",
+          500: "#b08d57",
+          600: "#937444",
+        },
       },
       boxShadow: {
         room: "0 10px 40px -12px rgba(0,0,0,0.55)",
